@@ -1,20 +1,36 @@
-;; Require Emacs' package functionality
-(require 'package)
-
-;; Add the Melpa repository to the list of package sources
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(require 'package) ;; You might already have this line
 (add-to-list 'package-archives
-             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-;; Initialise the package system.
-(package-initialize)
+             '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+             '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+(package-initialize) ;; You might already have this line
+
+(unless package-archive-contents
+  (package-refresh-contents))
+(package-install-selected-packages)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" default)))
+ '(package-selected-packages (quote (magit monokai-theme elpy anaconda-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; (add-hook 'python-mode-hook 'anaconda-mode)
+
 (elpy-enable)
- (require 'ido)
-    (ido-mode t)
-(defun elpy-rpc--backend-version (rpc-version)
-  "")
+(setq inhibit-splash-screen t)
 (load-theme 'wombat t)
-
-
+(ido-mode t)
 (global-linum-mode 1)
 (set-face-attribute 'default nil :font "Envy Code R-12")
 (setq next-line-add-newlines nil)
@@ -26,18 +42,3 @@
 (menu-bar-mode -1)
 
 (put 'downcase-region 'disabled nil)
-
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(python-check-command "/usr/local/bin/pyflakes"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
