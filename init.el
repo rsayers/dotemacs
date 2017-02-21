@@ -40,5 +40,5 @@
 (tool-bar-mode -1)
 (setq tab-width 4)
 (menu-bar-mode -1)
-
+(setq-default indent-tabs-mode nil)
 (put 'downcase-region 'disabled nil)
