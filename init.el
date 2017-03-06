@@ -32,7 +32,6 @@
 (load-theme 'wombat t)
 (ido-mode t)
 (global-linum-mode 1)
-(set-face-attribute 'default nil :font "Envy Code R-12")
 (setq next-line-add-newlines nil)
 (global-font-lock-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
